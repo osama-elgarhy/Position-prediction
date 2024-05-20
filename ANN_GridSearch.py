@@ -121,7 +121,7 @@ def baseline_model(opti):
 
     return classifier
 
-
+classifier = KerasClassifier(build_fn = baseline_model)
 parameters = {'batch_size': [25,5],
               'epochs': [500,1000,2000],
               'opti': [ 'adam', 'rmsprop']}
