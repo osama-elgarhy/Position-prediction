@@ -122,15 +122,9 @@ def baseline_model(opti):
     return classifier
 
 
-classifier = KerasClassifier(build_fn = baseline_model)
-parameters = {'batch_size': [25,5],
-              'epochs': [100],
-              'opti': [ 'adam']}
-"""
 parameters = {'batch_size': [25,5],
               'epochs': [500,1000,2000],
               'opti': [ 'adam', 'rmsprop']}
-"""
 
 """
 # write as many parameters as needed to try (more parameters = more computing time)
