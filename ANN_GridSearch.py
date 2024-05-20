@@ -10,14 +10,14 @@ import pandas
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.wrappers.scikit_learn import KerasClassifier
-from keras.utils import np_utils
-from sklearn.model_selection import cross_val_score
-from sklearn.model_selection import KFold
-from sklearn.preprocessing import LabelEncoder
-from sklearn.pipeline import Pipeline
+#from keras.utils import np_utils
+#from sklearn.model_selection import cross_val_score
+#from sklearn.model_selection import KFold
+#from sklearn.preprocessing import LabelEncoder
+#from sklearn.pipeline import Pipeline
 
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import pandas as pd
 
 
@@ -50,7 +50,7 @@ X=sc.fit_transform(X)
 ###########
 # upsampling
 
-from sklearn import datasets
+#from sklearn import datasets
 from sklearn.utils import shuffle
 
 i_class0 = np.where(y == 0)[0]
@@ -103,12 +103,7 @@ X, y  = sm.fit_resample(X, y)
 """
 ####################
 
-"""
-#y to binary for Precision calc
-from sklearn import preprocessing
-lb = preprocessing.LabelBinarizer()
-lb.fit(y)
-"""
+
 from sklearn.model_selection import GridSearchCV
 
 # define baseline model
@@ -129,13 +124,18 @@ def baseline_model(opti):
 
 classifier = KerasClassifier(build_fn = baseline_model)
 parameters = {'batch_size': [25,5],
+              'epochs': [100],
+              'opti': [ 'adam']}
+"""
+parameters = {'batch_size': [25,5],
               'epochs': [500,1000,2000],
               'opti': [ 'adam', 'rmsprop']}
+"""
 
 """
 # write as many parameters as needed to try (more parameters = more computing time)
-parameters = {'batch_size': [25, 5],
-              'epochs': [1000],
+parameters = {'batch_size': [25, 10, 5],
+              'epochs': [500,1000,2000],
               'opti': [ 'Adamax', 'SGD', 'adam', 'rmsprop']}
 
 """
